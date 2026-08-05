@@ -1,99 +1,77 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@theme {
+  --font-display: "Great Vibes", cursive;
+  --font-body: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --color-rose-soft: #ffb7c5;
+  --color-pink-deep: #e83e8c;
+  --color-blush: #fff0f5;
+  --color-lavender: #c9b1ff;
+  --color-heart: #ff4d6d;
+  --color-plum: #6b2d5c;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+* {
+  box-sizing: border-box;
 }
-a:hover {
-  color: #535bf2;
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  min-height: 100dvh;
+  width: 100%;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--color-plum);
+  background: #1a0a14;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-/* From Uiverse.io by adamgiebl */ 
 button {
-  font-size: 18px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  display: inline-block;
-  text-align: center;
-  font-weight: bold;
-  padding: 0.7em 2em;
-  border: 3px solid #FF0072;
-  border-radius: 10px;
-  position: relative;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
-  color: #FF0072;
-  text-decoration: none;
-  transition: 0.3s ease all;
-  z-index: 1;
+  font-family: inherit;
+  cursor: pointer;
 }
 
-button:before {
-  transition: 0.5s all ease;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  right: 50%;
-  bottom: 0;
-  opacity: 0;
-  content: '';
-  background-color: #FF0072;
-  z-index: -1;
+.font-display {
+  font-family: var(--font-display);
 }
 
-button:hover, button:focus {
-  color: white;
+.text-glow {
+  text-shadow:
+    0 0 12px rgba(255, 182, 193, 0.8),
+    0 0 28px rgba(255, 77, 109, 0.45);
 }
 
-button:hover:before, button:focus:before {
-  transition: 0.5s all ease;
-  left: 0;
-  right: 0;
-  opacity: 1;
-  border-radius: 2px;
-
+.photo-glow {
+  box-shadow:
+    0 0 20px rgba(255, 105, 180, 0.55),
+    0 0 50px rgba(201, 177, 255, 0.35),
+    0 0 80px rgba(255, 77, 109, 0.2);
 }
 
-button:active {
-  transform: scale(0.9);
-}
-
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@keyframes soft-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 12px rgba(255, 77, 109, 0.5));
   }
-  a:hover {
-    color: #747bff;
+  50% {
+    transform: scale(1.06);
+    filter: drop-shadow(0 0 28px rgba(255, 105, 180, 0.85));
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 2.4s ease-in-out infinite;
+}
+
+@media (pointer: coarse) {
+  .cursor-trail {
+    display: none !important;
   }
 }
